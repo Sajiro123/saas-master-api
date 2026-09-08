@@ -7,8 +7,8 @@ spring:
   application:
     name: saas-master-api
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://db.cbwpmluadnlgdrrwmhvf.supabase.co:5432/postgres?sslmode=require}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres.cbwpmluadnlgdrrwmhvf}
     password: ${SPRING_DATASOURCE_PASSWORD:4xu9nwaa6xBGp0Xu}
     driver-class-name: org.postgresql.Driver
     hikari:

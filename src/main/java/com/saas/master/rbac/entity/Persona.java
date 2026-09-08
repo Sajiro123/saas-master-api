@@ -36,6 +36,20 @@ public class Persona {
     @Column(name = "nro_colegiatura")
     private String nroColegiatura; // CQFP o CMP
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "negocio_id")
+    private com.saas.master.tenants.entity.Negocio negocio;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "perfil_id")
+    private Perfil perfil;
+
+    @Column(name = "fechanacimiento")
+    private java.time.LocalDate fechanacimiento;
+
+    @Column(name = "esta_activo")
+    private Boolean estaActivo = true;
+
     @Column(name = "creado_en")
     private ZonedDateTime creadoEn = ZonedDateTime.now();
 
@@ -43,6 +57,15 @@ public class Persona {
     private ZonedDateTime actualizadoEn = ZonedDateTime.now();
 
     public Persona() {}
+
+    public com.saas.master.tenants.entity.Negocio getNegocio() { return negocio; }
+    public void setNegocio(com.saas.master.tenants.entity.Negocio negocio) { this.negocio = negocio; }
+    public Perfil getPerfil() { return perfil; }
+    public void setPerfil(Perfil perfil) { this.perfil = perfil; }
+    public java.time.LocalDate getFechanacimiento() { return fechanacimiento; }
+    public void setFechanacimiento(java.time.LocalDate fechanacimiento) { this.fechanacimiento = fechanacimiento; }
+    public Boolean getEstaActivo() { return estaActivo != null ? estaActivo : true; }
+    public void setEstaActivo(Boolean estaActivo) { this.estaActivo = estaActivo; }
 
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }

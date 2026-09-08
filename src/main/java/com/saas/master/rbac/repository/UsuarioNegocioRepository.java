@@ -12,4 +12,6 @@ public interface UsuarioNegocioRepository extends JpaRepository<UsuarioNegocio, 
     List<UsuarioNegocio> findByNegocioId(UUID negocioId);
     Optional<UsuarioNegocio> findByNegocioIdAndEmail(UUID negocioId, String email);
     Optional<UsuarioNegocio> findByEmail(String email);
+    Optional<UsuarioNegocio> findByPersonaId(UUID personaId);
+    Optional<UsuarioNegocio> findByPersonaIdAndNegocioId(UUID personaId, UUID negocioId);
 }

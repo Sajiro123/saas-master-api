@@ -7,7 +7,7 @@ spring:
   application:
     name: saas-master-api
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require&prepareThreshold=0}
     username: ${SPRING_DATASOURCE_USERNAME:postgres.cbwpmluadnlgdrrwmhvf}
     password: ${SPRING_DATASOURCE_PASSWORD:4xu9nwaa6xBGp0Xu}
     driver-class-name: org.postgresql.Driver
@@ -15,16 +15,22 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
       idle-timeout: 300000
-      connection-timeout: 20000
+      max-lifetime: 600000
+      keepalive-time: 30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
       pool-name: MasterHikariCP
   jpa:
     hibernate:
-      ddl-auto: validate
-    show-sql: true
+      ddl-auto: ${HIBERNATE_DDL_AUTO:none}
+    open-in-view: false
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
 
 # Configuración de Seguridad y JWT
 jwt:
